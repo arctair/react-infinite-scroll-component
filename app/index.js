@@ -89,6 +89,10 @@ export default class InfiniteScroll extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.children !== this.props.chldren) this.throttledOnScrollListener();
+  }
+
   componentWillUnmount() {
     this.el.removeEventListener("scroll", this.throttledOnScrollListener);
 
